@@ -9,7 +9,7 @@ final usersRepositoryProvider = Provider<UsersRepository>((ref) {
 
 class UsersRepositoryImpl implements UsersRepository {
   @override
-  Future<User?> getUser(String email) async {
+  Future<User?> signIn(String email, String passcode) async {
    final CollectionReference usersRef =
        FirebaseFirestore.instance.collection('users');
    final  QuerySnapshot querySnapshot =
@@ -17,7 +17,11 @@ class UsersRepositoryImpl implements UsersRepository {
 
    if (querySnapshot.size > 0) {
      final User _user = User.fromDocument(querySnapshot.docs[0]);
-     return _user;
+     if (_user.passcode == passcode) {
+       return _user;
+     } else {
+       return null;
+     }
    } else {
      return null;
    }
