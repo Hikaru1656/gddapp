@@ -46,38 +46,51 @@ class MainTasksRepositoryImpl implements MainTasksRepository {
     }
   }
 
-  Future<MainTask?> registerMainTask(MainTask? newMainTask) async {
+  Future<bool> registerMainTask(MainTask newMainTask) async {
     if (currentUserNotifier.currentUser != null) {
-      final CollectionReference mainTasksRef =
-          FirebaseFirestore.instance.collection('users/${currentUserNotifier.currentUser!.userId}/mainTasks');
-      final DocumentReference docRef = await mainTasksRef.add(newMainTask!.toMap());
-      final DocumentSnapshot doc = await docRef.get();
-      return MainTask.fromDocument(doc);
+      try {
+        final CollectionReference mainTasksRef =
+        FirebaseFirestore.instance.collection('users/${currentUserNotifier.currentUser!.userId}/mainTasks');
+        final DocumentReference docRef = await mainTasksRef.add(newMainTask.toMap());
+        return true;
+      } catch (e) {
+        return false;
+      }
     } else {
-      return null;
+      return false;
     }
   }
 
-  Future<MainTask?> updateMainTask(String mainTaskId) async {
+  Future<bool> updateMainTask(MainTask newMainTask) async {
     if (currentUserNotifier.currentUser != null) {
-      final CollectionReference mainTasksRef =
-      FirebaseFirestore.instance.collection('users/${currentUserNotifier.currentUser!.userId}/mainTasks');
-      final  DocumentSnapshot documentSnapshot =
-      await mainTasksRef.doc(mainTaskId).get();
-      final MainTask _mainTask = MainTask.fromDocument(documentSnapshot);
-      FirebaseFirestore.instance.collection('users/${currentUserNotifier.currentUser!.userId}/mainTasks').doc(mainTaskId).update(_mainTask.toMap());
+      try {
+        final CollectionReference mainTasksRef =
+        FirebaseFirestore.instance.collection('users/${currentUserNotifier.currentUser!.userId}/mainTasks');
+        final test = mainTasksRef.doc(newMainTask.mainTaskId).update(newMainTask.toMap());
+        return true;
+      } catch (e) {
+        return false;
+      }
+
     }
     else {
-      return null;
+      return false;
     }
   }
 
-  Future<MainTask?> deleteMainTask(String mainTaskId) async {
+  Future<bool> deleteMainTask(MainTask mainTask) async {
     if (currentUserNotifier.currentUser != null) {
-      FirebaseFirestore.instance.collection('users/${currentUserNotifier.currentUser!.userId}/mainTasks').doc(mainTaskId).delete();
+      try {
+        final CollectionReference<Map<String, dynamic>> mainTasksRef =
+        FirebaseFirestore.instance.collection('users/${currentUserNotifier.currentUser!.userId}/mainTasks');
+        final test = mainTasksRef.doc(mainTask.mainTaskId).delete();
+        return true;
+      } catch (e) {
+        return false;
+      }
     }
     else {
-      return null;
+      return false;
     }
   }
 }
