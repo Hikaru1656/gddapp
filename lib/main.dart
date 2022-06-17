@@ -12,11 +12,14 @@ Future<void> main() async{
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
+  final _primaryColor = <int, Color>{900: Colors.yellow.shade600};
+
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Colors.white.withOpacity(0.9),
+        primarySwatch: Colors.yellow,
       ),
       home: MainPage(),
     );
