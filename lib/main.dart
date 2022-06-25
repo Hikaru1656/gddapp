@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gddapp/test.dart';
 import 'package:gddapp/views/main_page.dart';
+import 'package:gddapp/views/sign_in.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white.withOpacity(0.9),
         primarySwatch: Colors.yellow,
       ),
-      home: MainPage(),
+      home: SignIn(),
     );
   }
 }
