@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:gddapp/test.dart';
 import 'package:gddapp/views/main_page.dart';
 import 'package:gddapp/views/sign_in.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

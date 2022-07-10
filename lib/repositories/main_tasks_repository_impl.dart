@@ -66,12 +66,13 @@ class MainTasksRepositoryImpl implements MainTasksRepository {
       try {
         final CollectionReference mainTasksRef =
         FirebaseFirestore.instance.collection('users/${currentUserNotifier.currentUser!.userId}/mainTasks');
-        final test = mainTasksRef.doc(newMainTask.mainTaskId).update(newMainTask.toMap());
+        final test = await mainTasksRef.doc(
+            newMainTask.mainTaskId).update(newMainTask.toMap());
+        print('OK');
         return true;
       } catch (e) {
         return false;
       }
-
     }
     else {
       return false;

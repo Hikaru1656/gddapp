@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:gddapp/models/user.dart';
+import 'package:gddapp/view_models/current_user.dart';
+import 'package:gddapp/view_models/main_tasks_list.dart';
+import 'package:gddapp/views/main_page.dart';
 import 'package:gddapp/views/register_user.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({Key? key}) : super(key: key);
+class SignIn extends HookConsumerWidget {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passcodeController = TextEditingController();
 
   @override
-  _SignInState createState() => _SignInState();
-}
-
-class _SignInState extends State<SignIn> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -20,6 +21,7 @@ class _SignInState extends State<SignIn> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextField(
+                  controller: _emailController,
                   maxLines: 1,
                   minLines: 1,
                   autofocus: true,
@@ -28,6 +30,7 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
                 TextField(
+                  controller: _passcodeController,
                   maxLines: 1,
                   minLines: 1,
                   obscureText: true,
@@ -38,7 +41,31 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async{
+                      final User? _user = await ref.read(currentUserProvider).signIn(_emailController.text, _passcodeController.text);
+                      await ref.read(mainTasksProvider).getMainTaskList();
+                      if(_user == null) {
+                        showDialog(
+                            context: context,
+                            builder: (_) {
+                              return AlertDialog(
+                                title: Text('入力値が違います。'),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text('OK'),
+                                  ),
+                                ],
+
+                              );
+                            }
+                        );
+                      } else {
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainPage()));
+                      }
+                    },
                     child: Text('LogIn')
                 ),
                 Row(

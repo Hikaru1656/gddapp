@@ -17,8 +17,20 @@ class CurrentUserNotifier extends ChangeNotifier {
 
   User? currentUser;
 
-  Future<void> signIn(String email, String passcode) async {
+  Future<User?> signIn(String email, String passcode) async {
     final User? _currentUser = await usersRepository.signIn(email, passcode);
+    currentUser = _currentUser;
+    return _currentUser;
+    notifyListeners();
+  }
+  // Future<void> signIn(String email, String passcode) async {
+  //   final User? _currentUser = await usersRepository.signIn(email, passcode);
+  //   currentUser = _currentUser;
+  //   notifyListeners();
+  // }
+
+  Future<void> registerUser(User newUser) async {
+    final User? _currentUser = await usersRepository.registerUser(newUser);
     currentUser = _currentUser;
     notifyListeners();
   }
