@@ -13,7 +13,6 @@ class MainTask with _$MainTask {
     required String reward,
     required bool isDone,
     required DateTime deadline,
-    required List<SubTask> subTasksList,
     required DateTime createdAt,
     required DateTime updatedAt,
 
@@ -29,7 +28,6 @@ class MainTask with _$MainTask {
       reward: doc["reward"] as String,
       isDone: doc["isDone"] as bool,
       deadline: doc["deadline"].toDate(),
-      subTasksList: [],
       createdAt: doc["createdAt"].toDate(),
       updatedAt: doc["updatedAt"].toDate(),
     );

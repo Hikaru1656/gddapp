@@ -22,7 +22,6 @@ mixin _$MainTask {
   String get reward => throw _privateConstructorUsedError;
   bool get isDone => throw _privateConstructorUsedError;
   DateTime get deadline => throw _privateConstructorUsedError;
-  List<SubTask> get subTasksList => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
 
@@ -42,7 +41,6 @@ abstract class $MainTaskCopyWith<$Res> {
       String reward,
       bool isDone,
       DateTime deadline,
-      List<SubTask> subTasksList,
       DateTime createdAt,
       DateTime updatedAt});
 }
@@ -63,7 +61,6 @@ class _$MainTaskCopyWithImpl<$Res> implements $MainTaskCopyWith<$Res> {
     Object? reward = freezed,
     Object? isDone = freezed,
     Object? deadline = freezed,
-    Object? subTasksList = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -92,10 +89,6 @@ class _$MainTaskCopyWithImpl<$Res> implements $MainTaskCopyWith<$Res> {
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      subTasksList: subTasksList == freezed
-          ? _value.subTasksList
-          : subTasksList // ignore: cast_nullable_to_non_nullable
-              as List<SubTask>,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -109,9 +102,10 @@ class _$MainTaskCopyWithImpl<$Res> implements $MainTaskCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$MainTaskCopyWith<$Res> implements $MainTaskCopyWith<$Res> {
-  factory _$MainTaskCopyWith(_MainTask value, $Res Function(_MainTask) then) =
-      __$MainTaskCopyWithImpl<$Res>;
+abstract class _$$_MainTaskCopyWith<$Res> implements $MainTaskCopyWith<$Res> {
+  factory _$$_MainTaskCopyWith(
+          _$_MainTask value, $Res Function(_$_MainTask) then) =
+      __$$_MainTaskCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? mainTaskId,
@@ -120,19 +114,19 @@ abstract class _$MainTaskCopyWith<$Res> implements $MainTaskCopyWith<$Res> {
       String reward,
       bool isDone,
       DateTime deadline,
-      List<SubTask> subTasksList,
       DateTime createdAt,
       DateTime updatedAt});
 }
 
 /// @nodoc
-class __$MainTaskCopyWithImpl<$Res> extends _$MainTaskCopyWithImpl<$Res>
-    implements _$MainTaskCopyWith<$Res> {
-  __$MainTaskCopyWithImpl(_MainTask _value, $Res Function(_MainTask) _then)
-      : super(_value, (v) => _then(v as _MainTask));
+class __$$_MainTaskCopyWithImpl<$Res> extends _$MainTaskCopyWithImpl<$Res>
+    implements _$$_MainTaskCopyWith<$Res> {
+  __$$_MainTaskCopyWithImpl(
+      _$_MainTask _value, $Res Function(_$_MainTask) _then)
+      : super(_value, (v) => _then(v as _$_MainTask));
 
   @override
-  _MainTask get _value => super._value as _MainTask;
+  _$_MainTask get _value => super._value as _$_MainTask;
 
   @override
   $Res call({
@@ -142,11 +136,10 @@ class __$MainTaskCopyWithImpl<$Res> extends _$MainTaskCopyWithImpl<$Res>
     Object? reward = freezed,
     Object? isDone = freezed,
     Object? deadline = freezed,
-    Object? subTasksList = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_MainTask(
+    return _then(_$_MainTask(
       mainTaskId: mainTaskId == freezed
           ? _value.mainTaskId
           : mainTaskId // ignore: cast_nullable_to_non_nullable
@@ -171,10 +164,6 @@ class __$MainTaskCopyWithImpl<$Res> extends _$MainTaskCopyWithImpl<$Res>
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      subTasksList: subTasksList == freezed
-          ? _value.subTasksList
-          : subTasksList // ignore: cast_nullable_to_non_nullable
-              as List<SubTask>,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -197,11 +186,9 @@ class _$_MainTask extends _MainTask with DiagnosticableTreeMixin {
       required this.reward,
       required this.isDone,
       required this.deadline,
-      required final List<SubTask> subTasksList,
       required this.createdAt,
       required this.updatedAt})
-      : _subTasksList = subTasksList,
-        super._();
+      : super._();
 
   @override
   final String? mainTaskId;
@@ -215,13 +202,6 @@ class _$_MainTask extends _MainTask with DiagnosticableTreeMixin {
   final bool isDone;
   @override
   final DateTime deadline;
-  final List<SubTask> _subTasksList;
-  @override
-  List<SubTask> get subTasksList {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_subTasksList);
-  }
-
   @override
   final DateTime createdAt;
   @override
@@ -229,7 +209,7 @@ class _$_MainTask extends _MainTask with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MainTask(mainTaskId: $mainTaskId, title: $title, description: $description, reward: $reward, isDone: $isDone, deadline: $deadline, subTasksList: $subTasksList, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'MainTask(mainTaskId: $mainTaskId, title: $title, description: $description, reward: $reward, isDone: $isDone, deadline: $deadline, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -243,7 +223,6 @@ class _$_MainTask extends _MainTask with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('reward', reward))
       ..add(DiagnosticsProperty('isDone', isDone))
       ..add(DiagnosticsProperty('deadline', deadline))
-      ..add(DiagnosticsProperty('subTasksList', subTasksList))
       ..add(DiagnosticsProperty('createdAt', createdAt))
       ..add(DiagnosticsProperty('updatedAt', updatedAt));
   }
@@ -252,7 +231,7 @@ class _$_MainTask extends _MainTask with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MainTask &&
+            other is _$_MainTask &&
             const DeepCollectionEquality()
                 .equals(other.mainTaskId, mainTaskId) &&
             const DeepCollectionEquality().equals(other.title, title) &&
@@ -261,8 +240,6 @@ class _$_MainTask extends _MainTask with DiagnosticableTreeMixin {
             const DeepCollectionEquality().equals(other.reward, reward) &&
             const DeepCollectionEquality().equals(other.isDone, isDone) &&
             const DeepCollectionEquality().equals(other.deadline, deadline) &&
-            const DeepCollectionEquality()
-                .equals(other.subTasksList, subTasksList) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
@@ -276,14 +253,13 @@ class _$_MainTask extends _MainTask with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(reward),
       const DeepCollectionEquality().hash(isDone),
       const DeepCollectionEquality().hash(deadline),
-      const DeepCollectionEquality().hash(subTasksList),
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(updatedAt));
 
   @JsonKey(ignore: true)
   @override
-  _$MainTaskCopyWith<_MainTask> get copyWith =>
-      __$MainTaskCopyWithImpl<_MainTask>(this, _$identity);
+  _$$_MainTaskCopyWith<_$_MainTask> get copyWith =>
+      __$$_MainTaskCopyWithImpl<_$_MainTask>(this, _$identity);
 }
 
 abstract class _MainTask extends MainTask {
@@ -294,31 +270,28 @@ abstract class _MainTask extends MainTask {
       required final String reward,
       required final bool isDone,
       required final DateTime deadline,
-      required final List<SubTask> subTasksList,
       required final DateTime createdAt,
       required final DateTime updatedAt}) = _$_MainTask;
   _MainTask._() : super._();
 
   @override
-  String? get mainTaskId => throw _privateConstructorUsedError;
+  String? get mainTaskId;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
-  String get reward => throw _privateConstructorUsedError;
+  String get reward;
   @override
-  bool get isDone => throw _privateConstructorUsedError;
+  bool get isDone;
   @override
-  DateTime get deadline => throw _privateConstructorUsedError;
+  DateTime get deadline;
   @override
-  List<SubTask> get subTasksList => throw _privateConstructorUsedError;
+  DateTime get createdAt;
   @override
-  DateTime get createdAt => throw _privateConstructorUsedError;
-  @override
-  DateTime get updatedAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$MainTaskCopyWith<_MainTask> get copyWith =>
+  _$$_MainTaskCopyWith<_$_MainTask> get copyWith =>
       throw _privateConstructorUsedError;
 }

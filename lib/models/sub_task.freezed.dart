@@ -80,9 +80,10 @@ class _$SubTaskCopyWithImpl<$Res> implements $SubTaskCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$SubTaskCopyWith<$Res> implements $SubTaskCopyWith<$Res> {
-  factory _$SubTaskCopyWith(_SubTask value, $Res Function(_SubTask) then) =
-      __$SubTaskCopyWithImpl<$Res>;
+abstract class _$$_SubTaskCopyWith<$Res> implements $SubTaskCopyWith<$Res> {
+  factory _$$_SubTaskCopyWith(
+          _$_SubTask value, $Res Function(_$_SubTask) then) =
+      __$$_SubTaskCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? subTaskId,
@@ -93,13 +94,13 @@ abstract class _$SubTaskCopyWith<$Res> implements $SubTaskCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$SubTaskCopyWithImpl<$Res> extends _$SubTaskCopyWithImpl<$Res>
-    implements _$SubTaskCopyWith<$Res> {
-  __$SubTaskCopyWithImpl(_SubTask _value, $Res Function(_SubTask) _then)
-      : super(_value, (v) => _then(v as _SubTask));
+class __$$_SubTaskCopyWithImpl<$Res> extends _$SubTaskCopyWithImpl<$Res>
+    implements _$$_SubTaskCopyWith<$Res> {
+  __$$_SubTaskCopyWithImpl(_$_SubTask _value, $Res Function(_$_SubTask) _then)
+      : super(_value, (v) => _then(v as _$_SubTask));
 
   @override
-  _SubTask get _value => super._value as _SubTask;
+  _$_SubTask get _value => super._value as _$_SubTask;
 
   @override
   $Res call({
@@ -109,7 +110,7 @@ class __$SubTaskCopyWithImpl<$Res> extends _$SubTaskCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_SubTask(
+    return _then(_$_SubTask(
       subTaskId: subTaskId == freezed
           ? _value.subTaskId
           : subTaskId // ignore: cast_nullable_to_non_nullable
@@ -177,7 +178,7 @@ class _$_SubTask extends _SubTask with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SubTask &&
+            other is _$_SubTask &&
             const DeepCollectionEquality().equals(other.subTaskId, subTaskId) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.isDone, isDone) &&
@@ -196,8 +197,8 @@ class _$_SubTask extends _SubTask with DiagnosticableTreeMixin {
 
   @JsonKey(ignore: true)
   @override
-  _$SubTaskCopyWith<_SubTask> get copyWith =>
-      __$SubTaskCopyWithImpl<_SubTask>(this, _$identity);
+  _$$_SubTaskCopyWith<_$_SubTask> get copyWith =>
+      __$$_SubTaskCopyWithImpl<_$_SubTask>(this, _$identity);
 }
 
 abstract class _SubTask extends SubTask {
@@ -210,17 +211,17 @@ abstract class _SubTask extends SubTask {
   _SubTask._() : super._();
 
   @override
-  String? get subTaskId => throw _privateConstructorUsedError;
+  String? get subTaskId;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  bool get isDone => throw _privateConstructorUsedError;
+  bool get isDone;
   @override
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get createdAt;
   @override
-  DateTime get updatedAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$SubTaskCopyWith<_SubTask> get copyWith =>
+  _$$_SubTaskCopyWith<_$_SubTask> get copyWith =>
       throw _privateConstructorUsedError;
 }

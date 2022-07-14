@@ -34,8 +34,9 @@ class MainTasksListNotifier extends ChangeNotifier {
   }
 
   Future<void> getMainTaskById(String mainTaskId) async {
-    final MainTask? _mainTask = await mainTasksRepository.getMainTaskById(mainTaskId);
-    currentMainTask = _mainTask;
+    final MainTask? _currentMainTask = await mainTasksRepository.getMainTaskById(mainTaskId);
+    print(_currentMainTask!.mainTaskId);
+    currentMainTask = _currentMainTask;
     notifyListeners();
   }
 

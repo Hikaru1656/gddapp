@@ -29,7 +29,6 @@ class SubTask with _$SubTask {
   // User型からMap(データベース)へ
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      "subTaskId": subTaskId,
       "title": title,
       "isDone": isDone,
       "createdAt": Timestamp.fromDate(createdAt),
