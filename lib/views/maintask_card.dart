@@ -16,8 +16,6 @@ class MainTaskCard extends HookConsumerWidget {
     TextEditingController _subTaskTitleController = TextEditingController();
     final List<MainTask> _mainTaskList =
         ref.watch(mainTasksProvider).currentMainTasksList ?? [];
-    final List<SubTask> _subTaskList =
-        ref.watch(subTasksProvider).currentSubTasksList;
 
     return Slidable(
       endActionPane: ActionPane(
@@ -50,6 +48,8 @@ class MainTaskCard extends HookConsumerWidget {
             isScrollControlled: true,
             context: context,
             builder: (BuildContext context) {
+              final List<SubTask> _subTaskList =
+                  ref.watch(subTasksProvider).currentSubTasksList;
               return Container(
                 height: MediaQuery.of(context).size.height * 2 / 3,
                 child: Padding(

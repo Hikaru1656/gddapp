@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gddapp/models/main_task.dart';
 import 'package:gddapp/view_models/main_tasks_list.dart';
-import 'package:gddapp/views/maintask_card.dart';
-import 'package:gddapp/widgets/drawer_box.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class FloatingActionButtonBox extends HookConsumerWidget {
