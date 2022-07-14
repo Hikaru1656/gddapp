@@ -36,7 +36,7 @@ class SubTasksRepositoryImpl implements SubTasksRepository {
     List<SubTask> _subTasksList = [];
     if (currentUserNotifier.currentUser != null) {
       final CollectionReference subTasksRef =
-      FirebaseFirestore.instance.collection('users/${currentUserNotifier.currentUser!.userId}/subTasks');
+      FirebaseFirestore.instance.collection('users/${currentUserNotifier.currentUser!.userId}/mainTasks/${currentMainTaskNotifier.currentMainTask!.mainTaskId}/subTasks');
       final QuerySnapshot querySnapshot =
       await subTasksRef.get();
       for (QueryDocumentSnapshot doc in querySnapshot.docs) {
